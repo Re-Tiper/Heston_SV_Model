@@ -90,7 +90,7 @@ where $Z_S$ is the standard normal distribution correlated with $Z_v$ by $\rho$.
 
 Following Cholensky's decomposition, to construct $Z_S$ and $Z_v$, we first generate two independent $Z_1$ and $Z_2$ following $\mathcal{N}(0,1)$ and then set $Z_v = Z_1$ and $Z_S = \rho Z_1 + \sqrt{1-\rho^2}Z_2$.
 
-Alternatively, solving the equation for the price of the underlying asset, leads to the solution:
+Solving the equation for the price of the underlying asset, leads to the solution:
 
 $$
 S(t+dt) = S(t)\exp \left[ \int_{t}^{t+dt}\left(\mu-\frac{1}{2}v(u)\right)\, du + \int_{t}^{t+dt}\sqrt{v(u)}\, dW(u)\right]
