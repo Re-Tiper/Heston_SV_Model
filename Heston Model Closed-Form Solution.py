@@ -1,6 +1,6 @@
 def HestonCallFFT(kappa, theta, sigma, rho, r, v0, s0, strike, T):
     """
-    Computes the European call option price using the Heston model and Fast Fourier Transform.
+    Computes the European call option price using the Heston model and Fast Fourier Transform as proposed by Carr & Madan (1999)
 
     Parameters:
     kappa  - Rate of reversion
