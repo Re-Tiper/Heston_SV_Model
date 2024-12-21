@@ -1,8 +1,9 @@
 # Heston Stochastic Volatility Model
----
+
 I used data from https://www.kaggle.com/datasets/kylegraupe/spy-daily-eod-options-quotes-2020-2022 for the S&P 500 American options to calibrate the model.
----
+
 An introduction to the Heston SV model:
+---
 One of the most popular stochastic volatility models is the so-called **Heston model**, which is an extension of the **Black-Scholes-Merton model**. It is defined by the following system of stochastic differential equations, which describe the movement of an asset's price when both the price and its volatility follow random stochastic processes based on **Brownian motion**:
   
 $$
