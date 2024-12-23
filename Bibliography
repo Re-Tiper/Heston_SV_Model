@@ -1,11 +1,11 @@
-REFERENCES
-Black, F., & Scholes, M. (1973). The Pricing of Options and Corporate Liabilities. Journal of Political Economy, University of Chicago Press, vol. 81(3), pages 637-654, May-June.
+REFERENCESBlack, F., & Scholes, M. (1973). The Pricing of Options and Corporate Liabilities. Journal of Political Economy, University of Chicago Press, vol. 81(3), pages 637-654, May-June.
 Branch, M. A., Coleman, T. F., & Li, Y. (1999). A Subspace, Interior, and Conjugate Gradient Method for Large-Scale Bound-Constrained Minimization Problems. SIAM Journal on Scientific Computing, Vol. 21, Number 1, pp 1-23.
 Carr, P., & Madan, D. (1999). Option Valuation Using the Fast Fourier Transform. Journal of Computational Finance, 2, 61-73.
 Cui, Y., Rollin, S. d., & Germano, G. (2017). Full and fast calibration of the Heston stochastic volatility model. European Journal of Operational Research, Volume 263, Issue 2, Pages 625-638.
 Gustafsson, W. (2015). Evaluating the Longstaff-Schwartz method for pricing of American options.
 Heston, S. L. (1993). A closed-form solution for options with stochastic volatility, with applications to bond and currency options. Review of Financial Studies 6, 327-343.
 Longstaff, F. A., & Schwartz, E. S. (2001). Valuing American Options by Simulation: A Simple Least-Squares Approach. The Review of Financial Studies, vol. 14, no. 1, pp. 113–47.
+Merton, R. C. (1973). Theory of Rational Option Pricing. The Bell Journal of Economics and Management Science, 4(1), 141–183.
 Mikhailov, S., & Nögel, U. (2003). Heston's Stochastic Volatility Model Implementation, Calibration and Some.
 Pironneau, O. (2019). Calibration of Heston Model with Keras.
 Rouah, F. (2013). Euler and Milstein discretization.
