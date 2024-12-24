@@ -99,7 +99,7 @@ print(f"The option price is: {price:.4f}")
 
 
 """Plot volatility surface with changing rho"""
-'''
+
 # Define strikes and maturities
 strikes = np.linspace(80, 120, 20)
 mats = np.linspace(0.3, 2, 20)  # maturities
@@ -163,9 +163,9 @@ surf3.set_title(r'$\rho = -0.5$')
 surf3.set_zlabel('Implied Volatility')
 
 plt.show()
-'''
 
-'''
+
+
 # All together plots
 # Create a single figure for all surfaces
 fig = plt.figure(figsize=(18, 12))
@@ -218,7 +218,7 @@ ax3.set_zlabel('Implied Volatility')
 # Adjust layout and show
 plt.tight_layout()
 plt.show()
-'''
+
 
 
 """See how sigma (vol of vol) affects the volatility surface"""
