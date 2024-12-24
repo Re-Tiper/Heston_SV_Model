@@ -1,66 +1,44 @@
-def HestonCallFFT(kappa, theta, sigma, rho, r, v0, s0, strike, T):
-    """
-    Computes the European call option price using the Heston model and Fast Fourier Transform as proposed by Carr & Madan (1999)
+'''
+We provide a second method to compute the closed-form solution of the Heston model using the 
+adaptive quadrature method implemented by the quad function from SciPy’s integrate module
+'''
+from scipy import quad
 
-    Parameters:
-    kappa  - Rate of reversion
-    theta  - Long-run variance
-    sigma  - Volatility of variance
-    rho    - Correlation
-    r      - Risk-free rate
-    v0     - Initial variance
-    s0     - Initial asset price
-    strike - Strike price
-    T      - Time to maturity
+def HestonCallQuad(kappa, theta, sigma, rho, v0, r, T, s0, K):
+    """Computes the price of a European call option using the Heston model."""
+    call = s0 * HestonP(kappa, theta, sigma, rho, v0, r, T, s0, K, 1) \
+         - K * np.exp(-r * T) * HestonP(kappa, theta, sigma, rho, v0, r, T, s0, K, 2)
+    return call
 
-    Returns:
-    Call option price
-    """
-    #start_time = time.time()  # Start timer for the whole function
+def HestonP(kappa, theta, sigma, rho, v0, r, T, s0, K, option_type):
+    """Computes the Heston characteristic function using numerical integration."""
+    integral_result = quad(HestonPIntegrand, 0, 100, args=(kappa, theta, sigma, rho, v0, r, T, s0, K, option_type))[0]
+    return 0.5 + (1 / np.pi) * integral_result
 
-    x0 = np.log(s0)  # Initial log price
-    alpha = 1.25
-    N = 4096
-    c = 600
-    eta = c / N
-    b = np.pi / eta
-    u = np.arange(0, N) * eta
-    lambd = 2 * b / N
-    position = int(np.round((np.log(strike) + b) / lambd))  # Position of call value in FFT
+def HestonPIntegrand(phi, kappa, theta, sigma, rho, v0, r, T, s0, K, option_type):
+    """Evaluates the integrand for the Heston characteristic function."""
+    return np.real(np.exp(-1j * phi * np.log(K)) *
+                   HestonCharfun(phi, kappa, theta, sigma, rho, v0, r, T, s0, option_type) / (1j * phi))
 
-    # Complex numbers for characteristic function
-    v = u - (alpha + 1) * 1j
-    zeta = -0.5 * (v ** 2 + 1j * v)
-    gamma = kappa - rho * sigma * v * 1j
-    PHI = np.sqrt(gamma ** 2 - 2 * sigma ** 2 * zeta)
-    A = 1j * v * (x0 + r * T)
-    B = v0 * ((2 * zeta * (1 - np.exp(-PHI * T))) /
-              (2 * PHI - (PHI - gamma) * (1 - np.exp(-PHI * T))))
-    C = -(kappa * theta / sigma ** 2) * (
-            2 * np.log((2 * PHI - (PHI - gamma) * (1 - np.exp(-PHI * T))) / (2 * PHI)) +
-            (PHI - gamma) * T
-    )
+def HestonCharfun(phi, kappa, theta, sigma, rho, v0, r, T, s0, option_type):
+    """Computes the Heston characteristic function."""
+    if option_type == 1:
+        u = 0.5
+        b = kappa - rho * sigma
+    else:
+        u = -0.5
+        b = kappa
 
-    # Characteristic function
-    char_func = np.exp(A + B + C)
+    a = kappa * theta
+    x = np.log(s0)
+    d = np.sqrt((rho * sigma * phi * 1j - b)**2 - sigma**2 * (2 * u * phi * 1j - phi**2))
+    g = (b - rho * sigma * phi * 1j + d) / (b - rho * sigma * phi * 1j - d)
 
-    # Modified characteristic function
-    modified_char_func = (char_func * np.exp(-r * T) /
-                          (alpha ** 2 + alpha - u ** 2 + 1j * (2 * alpha + 1) * u))
+    C = r * phi * 1j * T + (a / sigma**2) * ((b - rho * sigma * phi * 1j + d) * T -
+                                                2 * np.log((1 - g * np.exp(d * T)) / (1 - g)))
+    D = (b - rho * sigma * phi * 1j + d) / sigma**2 * ((1 - np.exp(d * T)) / (1 - g * np.exp(d * T)))
 
-    # Simpson weights for integration
-    simpson_w = (1 / 3) * (3 + (-1) ** np.arange(1, N + 1) - np.append(1, np.zeros(N - 1)))
-
-    # FFT computation
-    fft_func = np.exp(1j * b * u) * modified_char_func * eta * simpson_w
-    payoff = np.real(np.fft.fft(fft_func))
-
-    # Extract call value
-    call_value_m = np.exp(-np.log(strike) * alpha) * payoff / np.pi
-    call_value = call_value_m[position]
-
-    #print(f"Total execution time: {time.time() - start_time:.4f} seconds")
-    return call_value
+    return np.exp(C + D * v0 + 1j * phi * x)
 
 # Define parameters
 kappa = 2
@@ -73,5 +51,5 @@ s0 = 100
 K = 110
 T = 1
 rho = 0.5
-call_price = HestonCallFFT(kappa, theta, sigma, rho, r, v0, s0, K, T)
-print(f"European Call Price: {call_price:.4f}")
+price = HestonCallQuad(kappa, theta, sigma, rho, v0, r, T, s0, K)
+print(f"The option price is: {price:.4f}")
