@@ -3,6 +3,7 @@ We provide a second method to compute the closed-form solution of the Heston mod
 adaptive quadrature method implemented by the quad function from SciPy’s integrate module
 '''
 from scipy import quad
+import numpy as np
 
 def HestonCallQuad(kappa, theta, sigma, rho, v0, r, T, s0, K):
     """Computes the price of a European call option using the Heston model."""
