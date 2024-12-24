@@ -1,3 +1,5 @@
+import numpy as np
+
 def HestonCallFFT(kappa, theta, sigma, rho, r, v0, s0, strike, T):
     """
     Computes the European call option price using the Heston model and Fast Fourier Transform.
