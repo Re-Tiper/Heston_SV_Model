@@ -52,13 +52,13 @@ d\widehat{W}_S(t) = dW_S(t) + \alpha_S \,dt \quad\text{where}\quad \alpha_S=\fra
 $$
 
 $$
-d\widehat{W}_v(t) = dW_v(t) + \alpha_v \,dt \quad\text{where}\quad \alpha_v=\frac{\lambda}{\sigma}\sqrt{v(t)}
+d\widehat{W}_v(t) = dW_v(t) + \alpha_v \dt \quad\text{where}\quad \alpha_v=\frac{\lambda}{\sigma}\sqrt{v(t)}
 $$
 
 and
 
 $$
-\widehat{\kappa} = \kappa + \lambda\,, \quad \widehat{\theta} = \frac{\kappa \theta}{\kappa + \lambda} \,, \quad \widehat{\rho}= \rho
+\widehat{\kappa} = \kappa + \lambda\, \quad \widehat{\theta} = \frac{\kappa \theta}{\kappa + \lambda} \, \quad \widehat{\rho}= \rho
 $$
 
 where $$\lambda$$ is the **risk premium** parameter, which can be estimated using expected returns from positions in options hedged against the risk of changes in the underlying asset.
