@@ -48,11 +48,11 @@ $$
 with
 
 $$
-d\widehat{W}_S(t) = dW_S(t) + \alpha_S \,dt \quad\text{where}\quad \alpha_S=\frac{\mu-r}{\sqrt{v(t)}}
+d\widehat{W}_S(t) = dW_S(t) + \alpha_S dt \quad\text{where}\quad \alpha_S=\frac{\mu-r}{\sqrt{v(t)}}
 $$
 
 $$
-d\widehat{W}_v(t) = dW_v(t) + \alpha_v \dt \quad\text{where}\quad \alpha_v=\frac{\lambda}{\sigma}\sqrt{v(t)}
+d\widehat{W}_v(t) = dW_v(t) + \alpha_v dt \quad\text{where}\quad \alpha_v=\frac{\lambda}{\sigma}\sqrt{v(t)}
 $$
 
 and
