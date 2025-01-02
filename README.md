@@ -1,6 +1,6 @@
 # Heston Stochastic Volatility Model
 
-### Abstract of the article:
+### <p align="center">Abstract of the article:</p>
 ---
 The present text shows the performance and provides a complete calibration of the Heston stochastic volatility model (1993). The model proposed by Heston is more general than the Black-Scholes model (1973) and includes it as a special case. We applied a weighted least squared error fit, choosing the deterministic trust region reflective optimization method in combination with the stochastic simulated annealing algorithm to calibrate the model. Then, we compared the efficiency of the Heston and Black-Scholes models on real data.
 
