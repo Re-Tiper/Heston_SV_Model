@@ -1,5 +1,12 @@
 # Heston Stochastic Volatility Model
 
+### Abstract of the article:
+---
+The present text shows the performance and provides a complete calibration of the Heston stochastic volatility model (1993). The model proposed by Heston is more general than the Black-Scholes model (1973) and includes it as a special case. We applied a weighted least squared error fit, choosing the deterministic trust region reflective optimization method in combination with the stochastic simulated annealing algorithm to calibrate the model. Then, we compared the efficiency of the Heston and Black-Scholes models on real data. <\br>
+
+Keywords: Options pricing, Martingale method, Heston model, Black-Scholes model, Trust Region Reflective, Simulated Annealing, Least-Squares Monte Carlo method (LSM) <\br>
+
+
 To calibrate the parameters of the Heston model I proposed and implemented a methodology which applies both deterministic (trust region reflective) and stochastic optimization methods (dual simulated annealing) and leverages the closed-form solution the model provides for European options. The project has resulted in one article, which has recently passed the peer-review process and is set to be published in the proceedings of the conference I presented it, as well as a more comprehensive thesis that expands on the article by including additional theory, rigorous proofs, and various implementations of models, in topics such as market forecasting, and numerical methods such as Monte Carlo in derivatives pricing (see Special_Topic_Latex repository). <\br>
 
 I used data from https://www.kaggle.com/datasets/kylegraupe/spy-daily-eod-options-quotes-2020-2022 for the S&P 500 American options to calibrate the model.
