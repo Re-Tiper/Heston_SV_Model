@@ -1,5 +1,7 @@
 # Heston Stochastic Volatility Model
 
+To calibrate the parameters of the Heston model I proposed and implemented a methodology which applies both deterministic (trust region reflective) and stochastic optimization methods (dual simulated annealing) and leverages the closed-form solution the model provides for European options. This involved utilizing skills I gained during my degree—mainly in measure theory, stochastic processes, numerical analysis, and programming—along with studying concepts such as martingales, stochastic integrals, stochastic differential equations. I also had the opportunity to present my work, under the guidance of Prof. Tsaklidis, at an international conference and at my university, before faculty and students. The project has resulted in one article, which has recently passed the peer-review process and is set to be published in the proceedings of the conference I presented, as well as a more comprehensive thesis that expands on the article by including additional theory, rigorous proofs, and various implementations of models, in topics such as market forecasting, and numerical methods such as Monte Carlo in derivatives pricing (see Special_Topic_Latex repository). <\br>
+
 I used data from https://www.kaggle.com/datasets/kylegraupe/spy-daily-eod-options-quotes-2020-2022 for the S&P 500 American options to calibrate the model.
 
 An introduction to the Heston SV model:
